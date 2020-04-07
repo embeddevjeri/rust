@@ -1,5 +1,6 @@
-use std::io;
+use std::io;  //Including a headerfile 
 
+//Main function 
 fn main() {
     println!("Hello, world!");
 
