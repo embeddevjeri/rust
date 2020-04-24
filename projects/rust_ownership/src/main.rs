@@ -1,4 +1,5 @@
 fn main() {
+    /*
     println!("Hello, world!");
     /* In this we see how the memory is allocated
     in the Rust Environment 
@@ -42,15 +43,46 @@ fn main() {
     {
         let mut s1 = String::from("Hello");
         s1.push_str(", World!");
-        println!("s1 = {}",s1);
-        let s2 = s1; // Here the ownership of s1 is transferred to s2
-        println!("s2 = {}",s2);
+        
+       // let s2 = s1; // Here the ownership of s1 is transferred to s2
+      //  println!("s2 = {}",s2);
       // println!("s1 = {}",s1); // s1 no longer holds the value and errors
+        // To solve this we use clone
+        let s2 = s1.clone(); // Here the ownership of s1 is transferred to s2
+        println!("s2 = {}",s2);
+        println!("s1 = {}",s1);
     }
-
+    */
+    /* Referencing a string 
+    {
+        let s = String::from("Hello");
+        takes_ownership(s);   // referencing the value
+        println!("The string is {}",s);  // Now the ownershipis given. 
+        // This will give an error
+    }
+    */
+    /* return values and scope */
+    {
+        let s1 = gives_ownership();
+        println!("the string is {}",s1);
     
 
-   
-    
-    
+        /* find length */
+        let l = get_length(&s1);
+        println!("The string length: {}",l);
+        println!("the string is {}",s1);
+    }
+}
+fn takes_ownership(s:String)   // passing by value
+{
+    println!("the string is {}",s);
+}
+fn gives_ownership() ->String{
+    let s = String::from("Hello World");
+    s
+}
+fn get_length(s:&String)->usize  // Call by Reference 
+{
+    let len = s.len();
+    len
 }
